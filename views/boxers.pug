@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  script(type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.12.4.js")
+  script(type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js")
+  script(type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js")
+
+  div.span12#wrapp
+    table.table.table-striped.table-bordered#example
+      thead
+        tr
+          th Name
+          th Club
+          th Poids
+          th Dept.
+      for boxer in boxers
+        tr
+          td.name #{boxer.name}
+          td#gym #{boxer.gym}
+          td#weight #{boxer.weight}
+          td#dept #{boxer.dep}
+    
+  script.
+    $(document).ready(function(){$('#example').DataTable();});
+  //-   +boxing(boxer)
+  //- mixin boxing(boxer)
