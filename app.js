@@ -24,6 +24,20 @@ app.get('/', function (req, res) {
     })
 
   })
+})
+.get('/fights/:userName', function (req, res) { 
+  MongoClient.connect(URL, function(err, db) {
+    if (err) return
+
+    var user_name = req.params.userName
+    var collection = db.collection('fights')
+    collection.find({"red" : user_name}, {"blue" : user_name}).toArray(function(err, docs) {
+      console.log(docs)
+      res.render('fights.pug', {fights: docs})
+      db.close()
+    })
+
+  })
 });
 
 app.use(function (req, res, next) {
