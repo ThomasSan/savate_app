@@ -4,7 +4,6 @@ block content
 
   -var win = 0
   -var loses = 0
-  h1 #{name}  V #{win} D #{loses}
   div.span12#wrapp
     table.table.table-striped.table-bordered#example
       thead
@@ -14,7 +13,6 @@ block content
           th Type
           th Bleu
           th Rouge
-          //- th Vainqueur
           th Victoire
       for fight in fights
         tr
@@ -22,11 +20,21 @@ block content
           td#gym #{fight.cat}
           td#weight #{fight.type}
           if fight.winner == "blue"
+            if name == fight.blue
+              -win++
             td#win( style="background-color: lawngreen;") #{fight.blue}
           else
+            if name == fight.blue
+              -loses++
             td#blue #{fight.blue}
           if fight.winner == "red"
+            if name == fight.red
+              -win++
             td#win( style="background-color: lawngreen;") #{fight.red}
           else
+            if name == fight.red
+              -loses++
             td#red #{fight.red}
           td#victory #{fight.victory}
+
+  h1 #{name}  V #{win} D #{loses}
