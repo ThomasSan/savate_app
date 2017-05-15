@@ -15,12 +15,12 @@ block content
           th Dept.
       for boxer in boxers
         tr
-          td.name #{boxer.name}
+          -var url = boxer.name;
+          td.name
+            a( href='fights/' + url) #{boxer.name}
           td#gym #{boxer.gym}
           td#weight #{boxer.weight}
           td#dept #{boxer.dep}
-    
+
   script.
     $(document).ready(function(){$('#example').DataTable();});
-  //-   +boxing(boxer)
-  //- mixin boxing(boxer)

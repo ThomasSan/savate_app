@@ -2,4 +2,31 @@ extends layout
 
 block content
 
-	#{fights}
+  -var win = 0
+  -var loses = 0
+  h1 #{name}  V #{win} D #{loses}
+  div.span12#wrapp
+    table.table.table-striped.table-bordered#example
+      thead
+        tr
+          th Competitions
+          th Poids
+          th Type
+          th Bleu
+          th Rouge
+          //- th Vainqueur
+          th Victoire
+      for fight in fights
+        tr
+          td.name #{fight.competition}
+          td#gym #{fight.cat}
+          td#weight #{fight.type}
+          if fight.winner == "blue"
+            td#win( style="background-color: lawngreen;") #{fight.blue}
+          else
+            td#blue #{fight.blue}
+          if fight.winner == "red"
+            td#win( style="background-color: lawngreen;") #{fight.red}
+          else
+            td#red #{fight.red}
+          td#victory #{fight.victory}

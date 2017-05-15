@@ -31,9 +31,9 @@ app.get('/', function (req, res) {
 
     var user_name = req.params.userName
     var collection = db.collection('fights')
-    collection.find({"red" : user_name}, {"blue" : user_name}).toArray(function(err, docs) {
-      console.log(docs)
-      res.render('fights.pug', {fights: docs})
+    collection.find({ $or : [ {red: user_name}, {blue: user_name} ] }).toArray(function(err, docs) {
+      console.log(user_name)
+      res.render('fights.pug', {fights: docs, name: user_name})
       db.close()
     })
 

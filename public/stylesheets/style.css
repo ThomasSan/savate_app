@@ -4,7 +4,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #42cbf4!important;
 }
 
 div {
@@ -28,4 +28,8 @@ td {
 
 #wrapp {
 	padding: 15px;
+}
+
+#win {
+	background-color: green!important;
 }
